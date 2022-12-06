@@ -11,6 +11,9 @@ services:
     entrypoint: ["check-config-server-started.sh"]
     depends_on:
       - config-server
+      - kafka-broker-1
+      - kafka-broker-2
+      - kafka-broker-3
     environment:
       - "JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 -Xms128m -Xmx256m"
       - "LOGGING_LEVEL_COM_MICROSERVICES_DEMO=info"
@@ -33,11 +36,12 @@ services:
   config-server:
     image: ${GROUP_ID}/config.server:${SERVICE_VERSION:-latest}
     ports:
-      - "5006:5006"
+      - "5007:5007"
+      - "8888:8888"
     volumes:
       - "./docker-logs:/workspace/config-server/logs"
     environment:
-      - "JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5006 -Xms128m -Xmx256m"
+      - "JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5007 -Xms128m -Xmx256m"
       - "ENCRYPT_KEY=${ENCRYPT_KEY}"
       - "TWITTER_BEARER_TOKEN=${TWITTER_BEARER_TOKEN}"
       - "CONSUMER_KEY=${CONSUMER_KEY}"
