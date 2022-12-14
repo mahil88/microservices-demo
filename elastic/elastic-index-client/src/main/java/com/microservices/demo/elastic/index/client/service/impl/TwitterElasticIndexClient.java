@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@ConditionalOnProperty(name = "elastic-config.is-repository" , havingValue = "false")
+@ConditionalOnProperty(name = "elastic-config.is-repository", havingValue = "false")
 public class TwitterElasticIndexClient implements ElasticIndexClient<TwitterIndexModel> {
 
     private static final Logger LOG = LoggerFactory.getLogger(TwitterElasticIndexClient.class);
