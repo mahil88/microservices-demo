@@ -13,11 +13,11 @@ INSERT INTO public.users(
 
 
 insert into documents(id, document_id)
-values ('c1df7d01-4bd7-40b6-86da-7e2ffabf37f7', 1);
+values ('c1df7d01-4bd7-40b6-86da-7e2ffabf37f7', 2551979274);
 insert into documents(id, document_id)
-values ('f2b2d644-3a08-4acb-ae07-20569f6f2a01', 2);
+values ('f2b2d644-3a08-4acb-ae07-20569f6f2a01', 1358806251077922816);
 insert into documents(id, document_id)
-values ('90573d2b-9a5d-409e-bbb6-b94189709a19', 3);
+values ('90573d2b-9a5d-409e-bbb6-b94189709a19', 1212292093856452608);
 
 insert into user_permissions(user_permission_id, user_id, document_id, permission_type)
 values (uuid_generate_v4(),'0f4884c8-584b-4893-9ad7-a93a6edca870', 'c1df7d01-4bd7-40b6-86da-7e2ffabf37f7', 'READ');
