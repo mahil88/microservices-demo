@@ -1,6 +1,18 @@
 elastic-query-service:
   version: v1
   custom-audience: elastic-query-service
+  webclient:
+    connect-timeout-ms: 10000
+    read-timeout-ms: 10000
+    write-timeout-ms: 10000
+    max-in-memory-size: 10485760 # 10MB
+    content-type: 'application/vnd.api.v1+json'
+    accept-type: 'application/vnd.api.v1+json'
+    query-type: 'KAFKA_STATE_STORE'
+  query-from-kafka-state-store:
+    method: GET
+    uri: "http://localhost:8187/kafka-streams-service/get-word-count-by-word/{word}"
+    accept: ${elastic-query-service.webclient.accept-type}
 
 server:
   port: 8183
@@ -12,8 +24,17 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8081/auth/realms/microservices-realm
-          jwk-set-uri: http://localhost:8081/auth/realms/microservices-realm/protocol/openid-connect/certs
+          issuer-uri: http://localhost:9091/auth/realms/microservices-realm
+          jwk-set-uri: http://localhost:9091/auth/realms/microservices-realm/protocol/openid-connect/certs
+      client:
+        registration:
+          keycloak:
+            client-id: 'elastic-query-service'
+            client-secret: '{cipher}eac7bb0da8e7f83f7a72ca9c6df4a644156759c97c5ab2cdf39018c49a83df9e68d13e4c065715de09fe1d3ee4ebc79aadaa78e3d52db6b9ea4337c5b858f90a'
+            authorizationGrantType: client_credentials
+        provider:
+          keycloak:
+            tokenUri: http://localhost:9091/auth/realms/microservices-realm/protocol/openid-connect/token
   jpa:
     open-in-view: false
     show-sql: true
