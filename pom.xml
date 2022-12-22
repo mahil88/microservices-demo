@@ -27,7 +27,7 @@
         <module>discovery-service</module>
 		<module>gateway-service</module>
 		<module>mdc-interceptor</module>
-    </modules>
+	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -228,6 +228,18 @@
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-loadbalancer</artifactId>
+				<version>${spring-cloud.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-sleuth</artifactId>
+				<version>${spring-cloud.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-zipkin</artifactId>
 				<version>${spring-cloud.version}</version>
 			</dependency>
 
