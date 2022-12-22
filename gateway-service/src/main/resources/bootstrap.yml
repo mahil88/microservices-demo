@@ -1,11 +1,11 @@
 spring:
   application:
-    name: elastic-query-web-client-2
+    name: gateway-service
   profiles:
-    active: elastic_query_web_2
+    active: gateway
   cloud:
     config:
-      name: elastic-query-web-client-2,config-client
+      name: gateway-service,config-client
       uri: http://localhost:8888
       username: spring_cloud_user
       password: '{cipher}fc32699ee2d0969f95df855e11d645554b6e173587c6c460e5395d4053fd64686f0f14a248dc18ab99bc72e24e3119fc'
